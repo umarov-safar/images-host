@@ -2,6 +2,25 @@
 @section('title', 'Images')
 
 @section('content')
-    <h1>Images</h1>
-    <a href="{{ route('images.create') }}">Create page</a>
+    <div class="">
+        <div class="flex justify-between">
+            <h1>Все картинки</h1>
+            <a class="btn float-right" href="{{ route('images.create') }}">Загрузить картинки</a>
+        </div>
+        <div class="images">
+            @foreach($data as $image)
+                <div class="img-card">
+                    <div class='info'>
+                        <p class="title-name">Название файла</p>
+                        <p class="file-name">{{ $image->name  }}</p>
+                        <img class="img" src="{{asset('storage/images/' . $image->name)}}">
+                    </div>
+                    <div class="btns">
+                        <a class="btn">Скачать zip</a>
+                        <a class="btn" href="{{asset('storage/images/' . $image->name)}}">Просмотрь</a>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
 @endsection
