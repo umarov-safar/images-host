@@ -22,7 +22,8 @@ class ImageService
     private function uploadFileAndGetName(UploadedFile $file): string
     {
         $fileName = $this->makeUniqueFileName($file);
-        Storage::putFileAs('images', $file, $fileName);
+
+        Storage::disk('public')->putFileAs('images', $file, $fileName);
 
         return $fileName;
     }
@@ -34,7 +35,7 @@ class ImageService
         $extension = $file->getClientOriginalExtension();
         $fileName = sprintf('%s.%s', $transliteratedFileName, $extension);
 
-        if (Storage::fileExists("images/$fileName")) {
+        if (Storage::disk('public')->fileExists("images/$fileName")) {
             $fileName = sprintf('%s_%s.%s', $transliteratedFileName, time(), $extension);
         }
 
