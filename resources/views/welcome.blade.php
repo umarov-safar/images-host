@@ -7,7 +7,6 @@
             <h1>Все картинки</h1>
             <a class="btn float-right" href="{{ route('images.create') }}">Загрузить картинки</a>
         </div>
-
         <form class="flex" style="margin-top: 10px; column-gap: 3px">
             <label for="sorts">Сортировка</label>
             <select id="sorts" name="sort[]">
