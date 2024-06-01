@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Images host</title>
-    </head>
-    <body>
-        <div>Welcome</div>
-    </body>
-</html>
+@extends('layouts.app')
+@section('title', 'Images')
+
+@section('content')
+    <h1>Images</h1>
+    <a href="{{ route('images.create') }}">Create page</a>
+@endsection
