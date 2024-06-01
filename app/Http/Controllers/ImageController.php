@@ -32,23 +32,10 @@ class ImageController extends Controller
         return redirect(route('images.index'));
     }
 
-    public function show(Image $image)
+    public function downloadZip(Image $image)
     {
-        //
-    }
+        $zipFile = $this->imageService->makeZipFile($image);
 
-    public function edit(Image $image)
-    {
-        //
-    }
-
-    public function update(UpdateImageRequest $request, Image $image)
-    {
-        //
-    }
-
-    public function destroy(Image $image)
-    {
-        //
+        return response()->download($zipFile);
     }
 }

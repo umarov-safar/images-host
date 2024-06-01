@@ -16,7 +16,7 @@
                         <img class="img" src="{{asset('storage/images/' . $image->name)}}">
                     </div>
                     <div class="btns">
-                        <a class="btn">Скачать zip</a>
+                        <a class="btn" href="{{ route('images.download-zip', $image->id) }}">Скачать zip</a>
                         <a class="btn" href="{{asset('storage/images/' . $image->name)}}">Просмотрь</a>
                     </div>
                 </div>

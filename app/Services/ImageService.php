@@ -6,6 +6,7 @@ use App\Models\Image;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use ZipArchive;
 
 class ImageService
 {
@@ -18,6 +19,23 @@ class ImageService
 
         return Image::insert($files);
     }
+
+
+    public function makeZipFile(Image $image)
+    {
+        $zip = new ZipArchive();
+        $zipFile = pathinfo($image->name, PATHINFO_FILENAME) . '.zip';
+        $zipFilePath = Storage::disk('public')->path($zipFile);
+
+        if (! $zip->open($zipFilePath, ZipArchive::CREATE)) {
+            throw new \Exception("Can not open $zipFilePath");
+        }
+        $zip->addFile(public_path('storage/images/' . $image->name), $image->name);
+        $zip->close();
+
+        return $zipFilePath;
+    }
+
 
     private function uploadFileAndGetName(UploadedFile $file): string
     {
@@ -41,4 +59,5 @@ class ImageService
 
         return $fileName;
     }
+
 }
