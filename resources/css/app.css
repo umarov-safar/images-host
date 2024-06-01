@@ -94,7 +94,6 @@ body {
 .img-card {
     padding: 10px;
     width: 300px;
-    height: 500px;
     border-radius: 10px;
     box-shadow: 1px 1px 6px #ccc;
     display: flex;
@@ -114,7 +113,6 @@ body {
     margin-bottom: 10px;
 }
 
-
 .img-card .img {
     width: 100%;
 }
@@ -122,4 +120,9 @@ body {
 .title-name {
     font-weight: bold;
     font-size: 18px;
+}
+
+.pagination {
+    margin-top: 30px;
+    font-size: 20px;
 }

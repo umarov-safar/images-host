@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Image;
+use Carbon\Carbon;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -14,7 +15,10 @@ class ImageService
     {
         /** @var UploadedFile $file */
         $files = array_map(function (UploadedFile $file) {
-            return ['name' => $this->uploadFileAndGetName($file)];
+            return [
+                'name' => $this->uploadFileAndGetName($file),
+                'created_at' => Carbon::now()
+            ];
         }, $files);
 
         return Image::insert($files);

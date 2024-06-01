@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreImageRequest;
-use App\Http\Requests\UpdateImageRequest;
 use App\Models\Image;
 use App\Services\ImageService;
 use Illuminate\View\View;
@@ -16,7 +15,8 @@ class ImageController extends Controller
 
     public function index(): View
     {
-        $data = Image::all();
+        $data = Image::sort()->cursorPaginate(25);
+
         return view('welcome', compact('data'));
     }
 
