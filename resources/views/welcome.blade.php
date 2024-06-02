@@ -10,6 +10,7 @@
         <form class="flex" style="margin-top: 10px; column-gap: 3px">
             <label for="sorts">Сортировка</label>
             <select id="sorts" name="sort[]">
+                <option value="not-sort">Выберите</option>
                 <option value="name">Название(A-Z)</option>
                 <option value="-name">Название(Z-A)</option>
                 <option value="created_at">Дата загрузки. Новые</option>

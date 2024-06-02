@@ -29,8 +29,12 @@ class ImageService
     {
         $zip = new ZipArchive();
         $zipFile = pathinfo($image->name, PATHINFO_FILENAME) . '.zip';
-        $zipFilePath = Storage::disk('public')->path($zipFile);
 
+        if (! Storage::disk('public')->exists('zips')) {
+            Storage::disk('public')->makeDirectory('zips');
+        }
+
+        $zipFilePath = Storage::disk('public')->path("zips/$zipFile");
         if (! $zip->open($zipFilePath, ZipArchive::CREATE)) {
             throw new \Exception("Can not open $zipFilePath");
         }
